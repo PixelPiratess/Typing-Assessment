@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master - Test Your Skills</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-keyboard"></i>
+                Typing Master
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#game-modes">Game Modes</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+            </ul>
+            <div class="mode-toggle">
+                <button id="toggle-mode" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="game-container" class="game-container">
+            <div class="game-header">
+                <h1>Typing Challenge</h1>
+                <div class="game-options">
+                    <div id="high-score">High Score: <span id="high-score-value">0 WPM</span></div>
+                    <select id="game-mode">
+                        <option value="standard">Standard</option>
+                        <option value="timed">Timed</option>
+                        <option value="zen">Zen Mode</option>
+                        <option value="quotes">Famous Quotes</option>
+                        <option value="code">Code Snippets</option>
+                        <option value="numbers">Number Sequences</option>
+                    </select>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+            </div>
+            <div class="typing-area">
+                <div id="text-display" class="text-display"></div>
+                <textarea id="user-input" class="user-input" placeholder="Start typing here..." autofocus></textarea>
+            </div>
+            <div class="game-footer">
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span id="wpm">0 WPM</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-bullseye"></i>
+                        <span id="accuracy">100%</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="time">0:00</span>
+                    </div>
+                </div>
+                <button id="restart-btn" class="restart-btn">
+                    <i class="fas fa-redo"></i> Restart
+                </button>
+            </div>
+        </section>
+        <section id="results" class="results hidden">
+            <h2>Your Results</h2>
+            <div class="result-stats">
+                <div class="result-item">
+                    <h3>Words Per Minute</h3>
+                    <span id="result-wpm">0</span>
+                </div>
+                <div class="result-item">
+                    <h3>Accuracy</h3>
+                    <span id="result-accuracy">0%</span>
+                </div>
+                <div class="result-item">
+                    <h3>Time</h3>
+                    <span id="result-time">0:00</span>
+                </div>
+            </div>
+            <button id="play-again-btn" class="cta-button">Play Again</button>
+        </section>
+        <section id="recent-games" class="recent-games">
+            <h2>Recent Games</h2>
+            <ul id="recent-games-list"></ul>
+        </section>
+        <section id="leaderboard" class="leaderboard">
+            <h2>Leaderboard</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>WPM</th>
+                        <th>Accuracy</th>
+                        <th>Mode</th>
+                        <th>Difficulty</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Leaderboard entries will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#game-modes">Game Modes</a></li>
+                    <li><a href="#leaderboard">Leaderboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Typing Master. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,39 +1,92 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Typing Test</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="stats">
-        <p>Time: <span id="timer">0s</span></p>
-        <p>Mistakes: <span id="mistakes">0</span></p>
-      </div>
-      <div
-        id="quote"
-        onmousedown="return false"
-        onselectstart="return false"
-      ></div>
-      <textarea
-        rows="3"
-        id="quote-input"
-        placeholder="Type here when the test starts.."
-      ></textarea>
-      <button id="start-test" onclick="startTest()">Start Test</button>
-      <button id="stop-test" onclick="displayResult()">Stop Test</button>
-      <div class="result">
-        <h3>Result</h3>
-        <div class="wrapper">
-          <p>Accuracy: <span id="accuracy"></span></p>
-          <p>Speed: <span id="wpm"></span></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master - Improve Your Typing Skills</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-keyboard"></i>
+                Typing Master
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="game.html" class="nav-cta">Play Now</a></li>
+            </ul>
+            <div class="mode-toggle">
+                <button id="toggle-mode" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h1>Master the Art of Typing</h1>
+            <p>Improve your speed and accuracy with our interactive typing challenges</p>
+            <a href="game.html" class="cta-button">Start Typing <i class="fas fa-arrow-right"></i></a>
+        </section>
+        <section id="features" class="features">
+            <h2>Why Choose Typing Master?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Boost Your Speed</h3>
+                    <p>Train to type faster with our adaptive challenges</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Improve Accuracy</h3>
+                    <p>Enhance your precision with real-time feedback</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your improvement with detailed statistics</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Compete & Achieve</h3>
+                    <p>Challenge yourself and earn achievements</p>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h2>About Typing Master</h2>
+            <p>Typing Master is more than just a typing test. It's a comprehensive platform designed to help you improve your typing skills through engaging exercises, varied content, and personalized feedback. Whether you're a beginner looking to master touch typing or a professional aiming to increase your productivity, Typing Master has something for everyone.</p>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="game.html">Play Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- Script -->
-    <script src="script.js"></script>
-  </body>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Typing Master. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
 </html>
