@@ -1,0 +1,356 @@
+:root {
+    --primary-blue: #3498db;
+    --primary-green: #2ecc71;
+    --dark-bg: #2c3e50;
+    --light-bg: #ecf0f1;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --gradient: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.about {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.about-header {
+    text-align: center;
+    padding: 6rem 0;
+    background: var(--gradient);
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    position: relative;
+}
+
+.about-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.about-header h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-in;
+}
+
+.about-header .tagline {
+    font-size: 2rem;
+    animation: fadeInUp 1.5s ease-in;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scroll-indicator {
+    text-align: center;
+    padding: 2rem 0;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+.scroll-icon {
+    font-size: 2rem;
+    color: var(--primary-blue);
+}
+
+.about-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.team,
+.mission,
+.contact-us {
+    margin-bottom: 8rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.team.visible,
+.mission.visible,
+.contact-us.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team h2,
+.mission h2,
+.contact-us h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.team h2::after,
+.mission h2::after,
+.contact-us h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 100px;
+    height: 4px;
+    background: var(--gradient);
+    transform: translateX(-50%);
+}
+
+.team-grid,
+.mission-content {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.team-member,
+.mission-item {
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    max-width: 400px;
+    flex: 1;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before,
+.mission-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient);
+    opacity: 0;
+    transform: rotate(45deg);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.team-member:hover::before,
+.mission-item:hover::before {
+    opacity: 0.1;
+}
+
+.team-member:hover,
+.mission-item:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.team-icon,
+.mission-icon {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.team-member:hover .team-icon,
+.mission-item:hover .mission-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.team-icon {
+    color: var(--primary-green);
+}
+
+.mission-icon {
+    color: var(--primary-blue);
+}
+
+.mission-item h3,
+.team-member h3 {
+    font-size: 2.4rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+}
+
+.mission-item p,
+.team-member p {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.contact-us {
+    text-align: center;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 5rem;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(10px);
+    z-index: 0;
+}
+
+.contact-us h2 {
+    position: relative;
+    z-index: 1;
+    color: var(--light-bg);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contact-us p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-button {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-button:hover {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-icon {
+    margin-right: 10px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-header {
+        padding: 4rem 0;
+    }
+
+    .about-header h1 {
+        font-size: 3.5rem;
+    }
+
+    .about-header .tagline {
+        font-size: 1.6rem;
+    }
+
+    .team h2,
+    .mission h2,
+    .contact-us h2 {
+        font-size: 3rem;
+    }
+
+    .team-grid,
+    .mission-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member,
+    .mission-item {
+        max-width: 100%;
+    }
+
+    .contact-us {
+        padding: 4rem 2rem;
+    }
+
+    .contact-button {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+}

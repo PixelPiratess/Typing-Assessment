@@ -1,0 +1,31 @@
+.login {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .login h2 {
+    font-size: 2em;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login form label {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  
+  .login form input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+  }
+  
+  .login form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+  

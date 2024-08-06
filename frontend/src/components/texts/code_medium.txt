@@ -1,0 +1,54 @@
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+for i in range(10):
+    print(fibonacci(i))
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+
+rect = Rectangle(5, 10)
+print(f"Area: {rect.area()}")
+
+# List comprehension
+squares = [x**2 for x in range(10)]
+print(squares)
+
+# Lambda function
+multiply = lambda x, y: x * y
+print(multiply(5, 3))
+
+# Error handling
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+
+# File handling
+with open("example.txt", "w") as f:
+    f.write("Hello, World!")
+
+with open("example.txt", "r") as f:
+    content = f.read()
+    print(content)
+
+# Decorator
+def uppercase_decorator(function):
+    def wrapper():
+        result = function()
+        return result.upper()
+    return wrapper
+
+@uppercase_decorator
+def greet():
+    return "hello, world!"
+
+print(greet())

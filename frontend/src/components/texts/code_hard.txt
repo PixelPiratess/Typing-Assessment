@@ -1,0 +1,86 @@
+import threading
+import time
+
+class Producer(threading.Thread):
+    def __init__(self, queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+
+    def run(self):
+        for i in range(10):
+            item = i
+            self.queue.put(item)
+            print(f"Produced {item}")
+            time.sleep(1)
+
+class Consumer(threading.Thread):
+    def __init__(self, queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+
+    def run(self):
+        while True:
+            item = self.queue.get()
+            print(f"Consumed {item}")
+            self.queue.task_done()
+
+queue = Queue()
+producer = Producer(queue)
+consumer = Consumer(queue)
+
+producer.start()
+consumer.start()
+
+queue.join()
+
+import asyncio
+import aiohttp
+
+async def fetch(session, url):
+    async with session.get(url) as response:
+        return await response.text()
+
+async def main():
+    urls = [
+        "https://api.github.com/events",
+        "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=YOUR_API_KEY",
+        "https://api.exchangeratesapi.io/latest"
+    ]
+    
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch(session, url) for url in urls]
+        responses = await asyncio.gather(*tasks)
+        for response in responses:
+            print(len(response))
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+# Generator function
+def fibonacci_generator():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+fib = fibonacci_generator()
+for _ in range(10):
+    print(next(fib))
+
+# Context manager
+class CustomContext:
+    def __enter__(self):
+        print("Entering the context")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting the context")
+        if exc_type is not None:
+            print(f"An error occurred: {exc_value}")
+        return True
+
+with CustomContext() as ctx:
+    print("Inside the context")
+    raise ValueError("Something went wrong")
+
+print("Continuing after the context")

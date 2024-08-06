@@ -1,0 +1,281 @@
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.typing-test {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f0f8ff;
+  color: #333;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #34495e;
+}
+
+.mode-selector, .difficulty-selector, .time-selector, .word-count-selector {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+}
+
+.mode-selector button, .difficulty-selector button, .time-selector button, .word-count-selector button {
+  background-color: #ffffff;
+  border: 2px solid #3498db;
+  color: #3498db;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-selector button {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.difficulty-selector button {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.time-selector button, .word-count-selector button {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.mode-selector button:hover, .difficulty-selector button:hover, 
+.time-selector button:hover, .word-count-selector button:hover {
+  background-color: #e6f3ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+}
+
+.mode-selector button.active, .difficulty-selector button.active, 
+.time-selector button.active, .word-count-selector button.active {
+  background-color: #3498db;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+  outline: 3px solid #2980b9;
+  outline-offset: 2px;
+}
+
+.mode-selector button.active::before, .difficulty-selector button.active::before, 
+.time-selector button.active::before, .word-count-selector button.active::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  transform: scale(0);
+  transition: transform 0.6s ease-out;
+}
+
+.mode-selector button.active:hover::before, .difficulty-selector button.active:hover::before, 
+.time-selector button.active:hover::before, .word-count-selector button.active:hover::before {
+  transform: scale(1);
+}
+
+.test-area {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.test-area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.test-text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  height: auto;
+  max-height: 6rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  background-color: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  color: #333;
+  font-size: 1.1rem;
+  padding: 1rem;
+  resize: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stats:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stats p {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.stats p:hover {
+  transform: scale(1.05);
+}
+
+.stats p svg {
+  margin-right: 0.75rem;
+  color: #3498db;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.stats p:hover svg {
+  transform: rotate(360deg);
+}
+
+.reset-button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.reset-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(52, 152, 219, 0.4);
+}
+
+.reset-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.reset-button:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .typing-test {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .mode-selector button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .difficulty-selector button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .time-selector button, .word-count-selector button {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .test-text, textarea {
+    font-size: 1rem;
+  }
+  
+  .stats p {
+    font-size: 1rem;
+  }
+}
