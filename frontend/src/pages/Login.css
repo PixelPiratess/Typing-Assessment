@@ -1,31 +1,217 @@
+:root {
+  --primary-blue: #3498db;
+  --primary-green: #2ecc71;
+  --dark-bg: #2c3e50;
+  --light-bg: #ecf0f1;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --gradient: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+}
+
 .login {
-    text-align: center;
-    padding: 20px;
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.login-header {
+  text-align: center;
+  padding: 5rem 0;
+  background: var(--gradient);
+  color: var(--white);
+  width: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  box-shadow: inset 0 -10px 15px rgba(0,0,0,0.3);
+}
+
+.login-header h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease-in;
+}
+
+.login-header .tagline {
+  font-size: 2rem;
+  animation: fadeInUp 1.5s ease-in;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 2%;
+}
+
+.login-form-container {
+  background-color: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  padding: 3rem;
+  width: 100%;
+  max-width: 500px;
+  margin-top: -80px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-form-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 20px;
+  opacity: 0.1;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-blue);
+  position: relative;
+}
+
+.form-group .icon {
+  margin-right: 12px;
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+}
+
+.form-group .label-text {
+  display: inline-block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input::placeholder {
+  color: var(--text-dark);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button[type="submit"] {
+  background: var(--gradient);
+  color: var(--white);
+  border: none;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"] .icon {
+  margin-right: 12px;
+  font-size: 1.3rem;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.4;
+}
+
+button[type="submit"]:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.error-message {
+  color: var(--primary-blue);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.signup-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.signup-link p {
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.signup-link a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .login-header h1 {
+      font-size: 2.8rem;
   }
-  
-  .login h2 {
-    font-size: 2em;
+
+  .login-header .tagline {
+      font-size: 1.3rem;
   }
-  
-  .login form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+  .login-form-container {
+      padding: 2rem;
   }
-  
-  .login form label {
-    font-size: 1.2em;
-    margin-top: 10px;
+
+  .form-group input {
+      padding: 10px;
   }
-  
-  .login form input {
-    width: 80%;
-    padding: 10px;
-    margin-top: 5px;
+
+  button[type="submit"] {
+      font-size: 1rem;
   }
-  
-  .login form button {
-    margin-top: 20px;
-    padding: 10px 20px;
-  }
-  
+}

@@ -94,6 +94,7 @@ const TypingTest = () => {
     setEndTime(null);
     setWpm(0);
     setAccuracy(100);
+    setTimeLeft(initialTime);
     setTestCompleted(false);
     if (gameMode) {
       fetchText(gameMode, difficulty, initialTime, wordCount);
