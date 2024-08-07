@@ -5,6 +5,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const resultRoutes = require('./routes/resultRoutes');
 const highscoreRoutes = require('./routes/highscoreRoutes'); // Add this line
+const leaderboardRoutes = require('./routes/leaderboardRoutes'); // Add this line
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/results', resultRoutes);
 app.use('/api/highscore', highscoreRoutes); // Add this line
+app.use('/api/leaderboard', leaderboardRoutes);  // Add this line
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

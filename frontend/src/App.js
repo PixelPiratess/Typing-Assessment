@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard'; // Import the Dashboard page
+import Leaderboard from './pages/Leaderboard';
 import './App.css';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} /> {/* Add the Dashboard route */}
+          <Route path="/leaderboard" element={<Leaderboard />} /> {/* Add the Leaderboard route */}
         </Routes>
         <Footer />
       </div>

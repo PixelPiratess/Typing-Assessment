@@ -202,11 +202,17 @@ const TypingTest = () => {
           timeLeft
         })
       });
-      if (!response.ok) throw new Error('Failed to save results');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to save results');
+      }
+      const data = await response.json();
+      console.log('Results saved successfully:', data);
     } catch (error) {
       console.error('Error saving results:', error);
     }
   };
+  
 
   const renderModeButtons = () => (
     <div className="mode-selector">
