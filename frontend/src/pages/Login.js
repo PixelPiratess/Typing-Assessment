@@ -15,6 +15,7 @@ const Login = () => {
     try {
       const { data } = await axios.post('http://localhost:5000/api/users/login', { email, password });
       localStorage.setItem('userInfo', JSON.stringify(data));
+      localStorage.setItem('authToken', data.token);
       window.location.href = '/play';
     } catch (error) {
       setError('Invalid email or password. Please try again.');

@@ -16,6 +16,7 @@ const Signup = () => {
     try {
       const { data } = await axios.post('http://localhost:5000/api/users/register', { username, email, password });
       localStorage.setItem('userInfo', JSON.stringify(data));
+      localStorage.setItem('authToken', data.token);
       window.location.href = '/play'; // Navigate to play page after successful signup
     } catch (error) {
       setError('Error signing up. Please try again.');

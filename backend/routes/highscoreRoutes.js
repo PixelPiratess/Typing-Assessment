@@ -1,10 +1,8 @@
 const express = require('express');
-const { addResult, getResults } = require('../controllers/resultController');
+const { getHighscores } = require('../controllers/highscoreController');
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.route('/')
-  .post(protect, addResult)
-  .get(protect, getResults);
+router.route('/').get(protect, getHighscores);
 
 module.exports = router;

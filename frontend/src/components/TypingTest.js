@@ -146,11 +146,13 @@ const TypingTest = () => {
     if (gameMode === 'words' && words.length >= wordCount) {
       setEndTime(new Date());
       setTestCompleted(true);
+      submitResults();
     }
 
     if (value === text) {
       setEndTime(new Date());
       setTestCompleted(true);
+      submitResults();
     }
   };
 
@@ -180,6 +182,29 @@ const TypingTest = () => {
     if (e.key === 'Tab' && testCompleted) {
       e.preventDefault();
       handleReset();
+    }
+  };
+
+  const submitResults = async () => {
+    try {
+      const response = await fetch('/api/results', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        },
+        body: JSON.stringify({
+          wpm,
+          accuracy,
+          gameMode,
+          difficulty,
+          wordCount,
+          timeLeft
+        })
+      });
+      if (!response.ok) throw new Error('Failed to save results');
+    } catch (error) {
+      console.error('Error saving results:', error);
     }
   };
 
