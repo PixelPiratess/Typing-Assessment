@@ -25,7 +25,7 @@
 
 .leaderboard-header {
     text-align: center;
-    padding: 5rem 0;
+    padding: 3rem 0;
     background: var(--gradient);
     color: var(--white);
     width: 100%;
@@ -74,7 +74,7 @@
     padding: 3rem;
     width: 100%;
     max-width: 1000px;
-    margin-top: -80px;
+    margin-top: -40px;
     position: relative;
     z-index: 1;
     backdrop-filter: blur(10px);
@@ -89,7 +89,7 @@
 .filter-options {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .filter-options label {
@@ -215,6 +215,78 @@
 .leaderboard-table tr:first-child td:nth-child(4) {
     animation: pulse 2s infinite;
     color: var(--gold);
+}
+
+.login-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-message h1 {
+    font-size: 2.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.login-message p {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.login-message button {
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.login-message button .icon {
+    margin-right: 12px;
+    font-size: 1.5rem;
+}
+
+.login-message button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0.5;
+}
+
+.login-message button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+.login-message button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {

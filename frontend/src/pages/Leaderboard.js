@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Leaderboard.css';
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [gameMode, setGameMode] = useState('');
   const [difficulty, setDifficulty] = useState('');
+  const [loggedIn, setLoggedIn] = useState(true); // Add this state
+  const navigate = useNavigate();
 
   const fetchLeaderboard = async () => {
     try {
@@ -15,12 +18,19 @@ const Leaderboard = () => {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         }
       });
-      if (!response.ok) throw new Error('Failed to fetch leaderboard');
+      if (!response.ok) {
+        if (response.status === 401) { // Unauthorized
+          setLoggedIn(false); // Set loggedIn to false
+          return;
+        }
+        throw new Error('Failed to fetch leaderboard');
+      }
       const data = await response.json();
       setLeaderboard(data);
-      console.log('Fetched leaderboard data:', data);
+      setLoggedIn(true); // Set loggedIn to true
     } catch (error) {
       console.error('Error fetching leaderboard:', error);
+      setLoggedIn(false); // Set loggedIn to false on error
     }
   };
 
@@ -71,60 +81,69 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard">
-      <div className="leaderboard-header">
-        <h1>Leaderboard</h1>
-        <p className="tagline">Top {gameMode ? '10' : '3'} players {gameMode ? `in ${gameMode} mode` : 'in each game mode'}</p>
-      </div>
-      <div className="leaderboard-content">
-        <div className="filter-options">
-          <label>
-            Game Mode:
-            <select value={gameMode} onChange={(e) => setGameMode(e.target.value)}>
-              <option value=''>All</option>
-              <option value='time'>Time</option>
-              <option value='code'>Code</option>
-              <option value='words'>Words</option>
-              <option value='quote'>Quote</option>
-            </select>
-          </label>
-          <label>
-            Difficulty:
-            <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-              <option value=''>All</option>
-              <option value='easy'>Easy</option>
-              <option value='medium'>Medium</option>
-              <option value='hard'>Hard</option>
-            </select>
-          </label>
+      {!loggedIn ? (
+        <div className="login-message">
+          <p>You need to log in to view the leaderboard.</p>
+          <button onClick={() => navigate('/login')}>Login Now</button>
         </div>
-        {filteredLeaderboard.map((modeData, index) => (
-          <div key={index}>
-            <h2>{modeData.gameMode.charAt(0).toUpperCase() + modeData.gameMode.slice(1)} Mode - {modeData.difficulty}</h2>
-            <table className="leaderboard-table">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Username</th>
-                  <th>WPM</th>
-                  <th>Accuracy</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                {modeData.users.map((user, userIndex) => (
-                  <tr key={userIndex}>
-                    <td>{userIndex + 1}</td>
-                    <td>{user.username}</td>
-                    <td>{user.wpm}</td>
-                    <td>{user.accuracy}%</td>
-                    <td>{new Date(user.date).toLocaleString()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      ) : (
+        <>
+          <div className="leaderboard-header">
+            <h1>Leaderboard</h1>
+            <p className="tagline">Top {gameMode ? '10' : '3'} players {gameMode ? `in ${gameMode} mode` : 'in each game mode'}</p>
           </div>
-        ))}
-      </div>
+          <div className="leaderboard-content">
+            <div className="filter-options">
+              <label>
+                Game Mode:
+                <select value={gameMode} onChange={(e) => setGameMode(e.target.value)}>
+                  <option value=''>All</option>
+                  <option value='time'>Time</option>
+                  <option value='code'>Code</option>
+                  <option value='words'>Words</option>
+                  <option value='quote'>Quote</option>
+                </select>
+              </label>
+              <label>
+                Difficulty:
+                <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+                  <option value=''>All</option>
+                  <option value='easy'>Easy</option>
+                  <option value='medium'>Medium</option>
+                  <option value='hard'>Hard</option>
+                </select>
+              </label>
+            </div>
+            {filteredLeaderboard.map((modeData, index) => (
+              <div key={index}>
+                <h2>{modeData.gameMode.charAt(0).toUpperCase() + modeData.gameMode.slice(1)} Mode - {modeData.difficulty}</h2>
+                <table className="leaderboard-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Username</th>
+                      <th>WPM</th>
+                      <th>Accuracy</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {modeData.users.map((user, userIndex) => (
+                      <tr key={userIndex}>
+                        <td>{userIndex + 1}</td>
+                        <td>{user.username}</td>
+                        <td>{user.wpm}</td>
+                        <td>{user.accuracy}%</td>
+                        <td>{new Date(user.date).toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

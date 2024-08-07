@@ -2,19 +2,26 @@
     --primary-blue: #3498db;
     --primary-green: #2ecc71;
     --dark-bg: #2c3e50;
-    --light-bg: #ecf0f1;
+    --light-bg: #f5f7fa;
     --white: #ffffff;
     --text-dark: #333333;
+    --text-light: #7f8c8d;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
     --gradient: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
 }
 
-.home {
+body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--light-bg);
     color: var(--text-dark);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.home {
+    overflow-x: hidden;
 }
 
 .home-main {
@@ -29,9 +36,9 @@
     color: var(--white);
     text-align: center;
     padding: 6rem 2rem;
-    border-radius: 30px;
+    border-radius: 0 0 50% 50% / 0 0 100px 100px;
     margin-bottom: 5rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -45,7 +52,7 @@
     height: 200%;
     background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
     transform: rotate(30deg);
-    animation: shine 10s infinite linear;
+    animation: shine 15s infinite linear;
 }
 
 @keyframes shine {
@@ -54,7 +61,7 @@
 }
 
 .hero h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -74,13 +81,13 @@
 .cta-button {
     background-color: var(--white);
     color: var(--primary-blue);
-    padding: 1.2rem 2.5rem;
+    padding: 1rem 2rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
     transition: var(--transition);
     display: inline-block;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -120,19 +127,22 @@
 }
 
 /* Features Section */
-.features {
+.features,
+.additional-features {
     margin-bottom: 6rem;
 }
 
-.features h2 {
+.features h2,
+.additional-features h2 {
     text-align: center;
     color: var(--primary-blue);
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     margin-bottom: 3.5rem;
     position: relative;
 }
 
-.features h2::after {
+.features h2::after,
+.additional-features h2::after {
     content: '';
     display: block;
     width: 60px;
@@ -144,16 +154,16 @@
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .feature-item {
     background-color: var(--white);
-    padding: 3rem 2.5rem;
-    border-radius: 25px;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -165,19 +175,19 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
+    height: 4px;
     background: var(--gradient);
 }
 
 .feature-item:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .feature-icon {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     color: var(--primary-green);
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     transition: var(--transition);
 }
 
@@ -187,13 +197,13 @@
 
 .feature-item h3 {
     color: var(--primary-blue);
-    margin-bottom: 1.2rem;
-    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
 }
 
 .feature-item p {
-    color: var(--text-dark);
-    font-size: 1.1rem;
+    color: var(--text-light);
+    font-size: 1rem;
 }
 
 /* Testimonials Section */
@@ -202,12 +212,13 @@
     padding: 5rem 3rem;
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 6rem;
 }
 
 .testimonials h2 {
     text-align: center;
     color: var(--white);
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     margin-bottom: 3.5rem;
     position: relative;
 }
@@ -217,15 +228,21 @@
     display: block;
     width: 60px;
     height: 4px;
-    background: var(--primary-blue);
+    background: var(--white);
     margin: 1rem auto 0;
     border-radius: 2px;
 }
 
+.testimonial-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
 .testimonial-item {
     background: var(--white);
-    padding: 3rem;
-    border-radius: 20px;
+    padding: 2.5rem;
+    border-radius: 15px;
     text-align: center;
     font-style: italic;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -240,7 +257,7 @@
 
 .testimonial-item::before {
     content: '\201C';
-    font-size: 8rem;
+    font-size: 6rem;
     color: var(--primary-blue);
     position: absolute;
     top: -20px;
@@ -249,18 +266,19 @@
 }
 
 .testimonial-item p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    color: var(--text-dark);
 }
 
 .testimonial-item cite {
     display: block;
-    margin-top: 1.8rem;
+    margin-top: 1.5rem;
     font-style: normal;
     font-weight: bold;
     color: var(--primary-green);
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 /* Animations */
@@ -281,53 +299,59 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1.5rem;
+        border-radius: 0 0 25% 25% / 0 0 50px 50px;
+    }
+
     .hero h1 {
-        font-size: 3.2rem;
+        font-size: 3rem;
     }
     
     .hero p {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
-    .feature-grid {
+    .feature-grid,
+    .testimonial-carousel {
         grid-template-columns: 1fr;
     }
 
     .features h2,
+    .additional-features h2,
     .testimonials h2 {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
+    }
+
+    .feature-item,
+    .testimonial-item {
+        padding: 2rem 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 4rem 1.5rem;
-    }
-
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .cta-button {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 
     .feature-icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .feature-item h3 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
-    .testimonial-item {
-        padding: 2.5rem 2rem;
+    .testimonial-item p {
+        font-size: 1rem;
     }
 }
-
-

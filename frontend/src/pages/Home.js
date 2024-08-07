@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  FaTachometerAlt,
-  FaBullseye,
+  FaKeyboard,
+  FaCode,
+  FaClock,
+  FaQuoteRight,
   FaChartLine,
   FaTrophy,
   FaArrowRight,
@@ -15,22 +17,48 @@ const Home = () => {
       <main className="home-main">
         <section className="hero">
           <h1>Master the Art of Typing</h1>
-          <p>Improve your speed and accuracy with our interactive typing challenges</p>
-          <Link to="/play" className="cta-button">Start Typing <FaArrowRight className="icon-right" /></Link>
+          <p>
+            Improve your speed and accuracy with our interactive typing
+            challenges
+          </p>
+          <Link to="/play" className="cta-button">
+            Start Typing <FaArrowRight className="icon-right" />
+          </Link>
         </section>
+
         <section className="features">
-          <h2>Why Choose TypeMaster?</h2>
+          <h2>Diverse Typing Challenges</h2>
           <div className="feature-grid">
             <div className="feature-item">
-              <FaTachometerAlt className="feature-icon" />
-              <h3>Boost Your Speed</h3>
-              <p>Train to type faster with our adaptive challenges</p>
+              <FaKeyboard className="feature-icon" />
+              <h3>Words Mode</h3>
+              <p>
+                Practice typing common words to build your vocabulary and speed
+              </p>
             </div>
             <div className="feature-item">
-              <FaBullseye className="feature-icon" />
-              <h3>Improve Accuracy</h3>
-              <p>Enhance your precision with real-time feedback</p>
+              <FaCode className="feature-icon" />
+              <h3>Code Mode</h3>
+              <p>
+                Enhance your coding speed with programming language snippets
+              </p>
             </div>
+            <div className="feature-item">
+              <FaClock className="feature-icon" />
+              <h3>Time Mode</h3>
+              <p>Race against the clock to improve your typing speed</p>
+            </div>
+            <div className="feature-item">
+              <FaQuoteRight className="feature-icon" />
+              <h3>Quote Mode</h3>
+              <p>Type famous quotes to enhance your accuracy and speed</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="additional-features">
+          <h2>Why Choose TypeMaster?</h2>
+          <div className="feature-grid">
             <div className="feature-item">
               <FaChartLine className="feature-icon" />
               <h3>Track Progress</h3>
@@ -38,8 +66,8 @@ const Home = () => {
             </div>
             <div className="feature-item">
               <FaTrophy className="feature-icon" />
-              <h3>Compete & Achieve</h3>
-              <p>Challenge yourself and earn achievements</p>
+              <h3>Leaderboards</h3>
+              <p>Compete with others and see where you rank</p>
             </div>
           </div>
         </section>
@@ -49,12 +77,47 @@ const Home = () => {
           <div className="testimonial-carousel">
             <div className="testimonial-item">
               <p>
-                "TypeMaster helped me increase my typing speed by 20 WPM in just
-                two weeks!"
+                "TypeMaster's diverse challenges helped me improve my typing in
+                both English and code. It's a game-changer!"
               </p>
-              - Sarah K.
+              - Alex M., Software Developer, USA
             </div>
-            {/* Add more testimonials as needed */}
+            <div className="testimonial-item">
+              <p>
+                "The leaderboard feature keeps me motivated. I've seen my speed
+                increase from 50 to 80 WPM in just a month!"
+              </p>
+              - Sarah K., Student, Canada
+            </div>
+            <div className="testimonial-item">
+              <p>
+                "As an Indian student preparing for competitive exams,
+                TypeMaster has significantly improved my typing speed and
+                accuracy."
+              </p>
+              - Rahul P., Engineering Student, India
+            </div>
+            <div className="testimonial-item">
+              <p>
+                "The Code Mode is fantastic! It's helped me become much more
+                efficient in my programming tasks."
+              </p>
+              - Emma L., Full Stack Developer, UK
+            </div>
+            <div className="testimonial-item">
+              <p>
+                "I love the Quote Mode. It's not only improving my typing but
+                also introducing me to inspiring words!"
+              </p>
+              - Priya S., Content Writer, India
+            </div>
+            <div className="testimonial-item">
+              <p>
+                "TypeMaster has been instrumental in helping me prepare for my
+                UPSC exam. Highly recommended for all Indian students!"
+              </p>
+              - Amit K., UPSC Aspirant, India
+            </div>
           </div>
         </section>
       </main>

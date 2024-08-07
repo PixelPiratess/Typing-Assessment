@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaHome, FaPlay, FaInfo, FaEnvelope, FaSignInAlt, FaKeyboard, FaUserCircle, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import { FaHome, FaPlay, FaInfo, FaEnvelope, FaSignInAlt, FaKeyboard, FaUserCircle, FaSignOutAlt, FaTachometerAlt, FaChartLine } from 'react-icons/fa';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
@@ -52,6 +52,7 @@ const NavigationBar = () => {
           <li><Link to="/" onClick={toggleMenu}><FaHome className="nav-icon" /> Home</Link></li>
           <li><Link to="/play" onClick={toggleMenu}><FaPlay className="nav-icon" /> Play</Link></li>
           <li><Link to="/about" onClick={toggleMenu}><FaInfo className="nav-icon" /> About</Link></li>
+          <li><Link to="/leaderboard" onClick={toggleMenu}><FaChartLine className="nav-icon" /> Leaderboard</Link></li>
           <li><Link to="/contact" onClick={toggleMenu}><FaEnvelope className="nav-icon" /> Contact</Link></li>
           {user ? (
             <li className="user-menu">
